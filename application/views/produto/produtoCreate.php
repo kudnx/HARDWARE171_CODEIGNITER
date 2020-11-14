@@ -18,17 +18,17 @@
 				<?php endforeach; ?>;
 				</select><br><br>
 				<label for="nome">Digite o nome do produto</label>
-				<input type="nome" name="nome" value=""><br>
+				<input type="nome" name="nome" value="" required ><br><br>
 				<label for="precoCompra">Digite o preço de compra do produto</label>
-				<input type="number" name="precoCompra" value=""><br>
+				<input type="number" name="precoCompra" value="" required ><br><br>
 				<label for="precoVenda">Digite o preço de venda do produto</label>
-				<input type="number" name="precoVenda" value=""><br>
+				<input type="number" name="precoVenda" value="" required ><br><br>
 				<label for="quantidade">Digite a quantidade do produto</label>
-				<input type="number" name="quantidade" value=""><br>
+				<input type="number" name="quantidade" value="" required ><br><br>
 				<label for="descricao">Digite a descricao do produto</label>
-				<input type="text" name="descricao" value=""><br>
+				<input type="text" name="descricao" value="" required ><br><br>
 				<label for="logo">Selecione a foto do produto</label>
-				<input type="file" name="foto" value=""><br><br>
+				<input type="file" name="foto" value="" required ><br><br>
 				<button class="btn btn-primary btn-lg">Cadastrar</button>
 			</form>
 		</div>

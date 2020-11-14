@@ -12,9 +12,9 @@
 		<div div class="container center_div">
 			<form action="/HARDWARE171_CODEIGNITER/fornecedor/insert" method="post" enctype="multipart/form-data" accept-charset="utf-8">
 				<label for="nome">Digite o nome</label>
-				<input type="nome" name="nome" value=""><br>
+				<input type="nome" name="nome" value="" required ><br><br>
 				<label for="logo">Selecione a logo</label>
-				<input type="file" name="logo" value=""><br><br>
+				<input type="file" name="logo" value="" required ><br><br>
 				<button class="btn btn-primary btn-lg">Cadastrar</button>
 			</form>
 		</div>

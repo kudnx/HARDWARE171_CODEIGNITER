@@ -101,6 +101,7 @@ class Admin extends CI_Controller {
 				$adminLogged = $this->adminModel->getLoggedAdmin($this->adminModel->verifyLogin()[0]['id']);
 				$data['admin'] = $this->adminModel->getAdmin();
 				$this->session->set_userdata('adminLogged', $adminLogged[0]['email']);
+				$this->session->set_userdata('adminID', $adminLogged[0]['id']);
 				$this->load->view('admin/adminList', $data);
 			}
 			else {

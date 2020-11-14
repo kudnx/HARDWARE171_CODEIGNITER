@@ -18,7 +18,7 @@
 				<?php endforeach; ?>;
 				</select><br><br>
 				<label for="quantidade">Digite a quantidade do produto</label>
-				<input type="number" name="quantidade" value=""><br><br>
+				<input type="number" name="quantidade" value="1" min="1" required ><br><br>
 				<button class="btn btn-primary btn-lg">Cadastrar</button>
 			</form>
 		</div>

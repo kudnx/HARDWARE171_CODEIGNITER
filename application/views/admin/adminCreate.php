@@ -11,9 +11,9 @@
 		<div class="container center_div">
 			<form action="/HARDWARE171_CODEIGNITER/admin/insert" method="post" accept-charset="utf-8">
 				<label for="email">Digite o Email</label>
-				<input type="email" name="email" value=""><br>
+				<input type="email" name="email" value="" placeholder="exemplo@123.com" required ><br><br>
 				<label for="email">Digite a Senha</label>
-				<input type="password" name="senha" value=""><br><br>
+				<input type="password" name="senha" value="" placeholder="*******" required ><br><br>
 				<button class="btn btn-primary btn-lg">Cadastrar</button>
 			</form>
 		</div>

@@ -15,17 +15,16 @@
 				<input type="text" name="id" value="<?php echo $produto[0]['id']; ?>" hidden>
 				</select><br><br>
 				<label for="nome">Digite o nome do produto</label>
-				<input type="nome" name="nome" value="<?php echo $produto[0]['nome']; ?>"><br>
+				<input type="nome" name="nome" value="<?php echo $produto[0]['nome']; ?>" required ><br><br>
 				<label for="precoCompra">Digite o preço de compra do produto</label>
-				<input type="number" name="precoCompra" value="<?php echo $produto[0]['precoCompra']; ?>"><br>
+				<input type="number" name="precoCompra" value="<?php echo $produto[0]['precoCompra']; ?>" required ><br><br>
 				<label for="precoVenda">Digite o preço de venda do produto</label>
-				<input type="number" name="precoVenda" value="<?php echo $produto[0]['precoVenda']; ?>"><br>
-				<label for="quantidade">Digite a quantidade do produto</label>
-				<input type="number" name="quantidade" value="<?php echo $produto[0]['quantidade']; ?>"><br>
+				<input type="number" name="precoVenda" value="<?php echo $produto[0]['precoVenda']; ?>" required ><br><br>
+				<input type="number" name="quantidade" value="<?php echo $produto[0]['quantidade']; ?>" hidden >
 				<label for="descricao">Digite a descricao do produto</label>
-				<input type="text" name="descricao" value="<?php echo $produto[0]['descricao']; ?>"><br>
+				<input type="text" name="descricao" value="<?php echo $produto[0]['descricao']; ?>" required ><br><br>
 				<label for="logo">Selecione a foto do produto</label>
-				<input type="file" name="foto" value="<?php echo $produto[0]['foto']; ?>"><br><br>
+				<input type="file" name="foto" value="<?php echo $produto[0]['foto']; ?>" required ><br><br>
 				<button class="btn btn-primary btn-lg">Cadastrar</button>
 			</form>
 		</div>
