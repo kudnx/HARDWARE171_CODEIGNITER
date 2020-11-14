@@ -131,6 +131,7 @@ class Produto extends CI_Controller {
 			echo "<script>alert('Produto Editado com Sucesso!!')</script>";
 			$data['produtofornecedor'] = $this->produtoModel->getProdutoFornecedor();
 			$this->load->view('produto/produtoList', $data);
+			echo "<script>window.location.href = 'http://localhost/HARDWARE171_CODEIGNITER/produto/list'</script>";
 		}
 	}
 
@@ -141,8 +142,8 @@ class Produto extends CI_Controller {
 		$config['upload_path']          = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/produto/';
 		unlink($config['upload_path'] . $imageName);
 		$this->produtoModel->deleteProduto($id);
-		$data['produtofornecedor'] = $this->produtoModel->getProdutoFornecedor();
-		$this->load->view('produto/produtoList', $data);
+		echo "<script>alert('Produto Excluido com Sucesso!!')</script>";
+		echo "<script>window.location.href = 'http://localhost/HARDWARE171_CODEIGNITER/produto/list'</script>";
 	}
 
 

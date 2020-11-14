@@ -127,9 +127,8 @@ class Fornecedor extends CI_Controller {
 		$config['upload_path'] = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/fornecedor/';
 		unlink($config['upload_path'] . $imageName);
 		$this->fornecedorModel->deleteFornecedor($id);
-		//$data['fornecedor'] = $this->fornecedorModel->getFornecedor();
-		//$this->load->view('fornecedor/fornecedorList', $data);
-		header("Location: fornecedor/fornecedorList");
+		echo "<script>alert('Fornecedor Excluido com Sucesso!!')</script>";
+		echo "<script>window.location.href = 'http://localhost/HARDWARE171_CODEIGNITER/fornecedor/list'</script>";
 	}
 
 
