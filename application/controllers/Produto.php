@@ -75,9 +75,9 @@ class Produto extends CI_Controller {
 		$extension = strrchr($logo['name'],'.');
 		$imageName = $imageName . $extension;
 
-		$config['upload_path'] = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/produto/';
-    	$config['allowed_types'] = 'gif|jpg|png';
-		$config['file_name'] = $imageName;
+		$config['upload_path']          = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/produto/';
+    $config['allowed_types']        = 'gif|jpg|png';
+		$config['file_name']						= $imageName;
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -110,6 +110,12 @@ class Produto extends CI_Controller {
 
 		$imageName = $data[0]['foto'];
 		$logo    = $_FILES['foto'];
+		$extension = strrchr($logo['name'],'.');
+		$novaImageName = $_POST['nome'] . $extension;
+
+		$config['upload_path']          = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/produto/';
+    $config['allowed_types']        = 'gif|jpg|png';
+		$config['file_name']						= $novaImageName;
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -119,14 +125,9 @@ class Produto extends CI_Controller {
 		else
 		{
 			unlink($config['upload_path'] . $imageName);
-			//$extension = strrchr($logo['name'],'.');
-			$imageName = $imageName . $extension;
-			$config['upload_path'] = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/produto/';
-			$config['allowed_types'] = 'gif|jpg|png';
-			$config['file_name'] = $imageName;
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('foto');
-			$this->produtoModel->updateProduto($imageName);
+			$this->produtoModel->updateProduto($novaImageName);
 			echo "<script>alert('Produto Editado com Sucesso!!')</script>";
 			$data['produtofornecedor'] = $this->produtoModel->getProdutoFornecedor();
 			$this->load->view('produto/produtoList', $data);

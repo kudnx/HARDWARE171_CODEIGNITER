@@ -92,10 +92,12 @@ class Fornecedor extends CI_Controller {
 		$this->form_validation->set_rules('id', 'Id', 'required');
 		$this->form_validation->set_rules('nome', 'Nome', 'required');
 
-		$imageName = $_POST['nome'];
+		$data = $this->fornecedorModel->getSelectedFornecedor($_POST['id']);
+
+		$imageName = $data[0]['logo'];
 		$logo    = $_FILES['logo'];
 		$extension = strrchr($logo['name'],'.');
-		$imageName = $imageName . $extension;
+		$novaImageName = $imageName . $extension;
 
 		$config['upload_path']          = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/fornecedor/';
     $config['allowed_types']        = 'gif|jpg|png';
@@ -110,9 +112,10 @@ class Fornecedor extends CI_Controller {
 		}
 		else
 		{
+			unlink($config['upload_path'] . $imageName);
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('logo');
-			$this->fornecedorModel->updateFornecedor($imageName);
+			$this->fornecedorModel->updateFornecedor($novaImageName);
 			echo "<script>alert('Fornecedor Editado com Sucesso!!')</script>";
 			$data['fornecedor'] = $this->fornecedorModel->getFornecedor();
 			$this->load->view('fornecedor/fornecedorList', $data);
