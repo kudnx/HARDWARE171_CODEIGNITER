@@ -113,9 +113,9 @@ class Produto extends CI_Controller {
 		$extension = strrchr($logo['name'],'.');
 		$novaImageName = $_POST['nome'] . $extension;
 
-		$config['upload_path']          = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/produto/';
-    $config['allowed_types']        = 'gif|jpg|png';
-		$config['file_name']						= $novaImageName;
+		$config['upload_path'] = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/produto/';
+    	$config['allowed_types'] = 'gif|jpg|png';
+		$config['file_name'] = $novaImageName;
 
 		if($this->form_validation->run() == FALSE)
 		{

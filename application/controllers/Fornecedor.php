@@ -95,15 +95,13 @@ class Fornecedor extends CI_Controller {
 		$data = $this->fornecedorModel->getSelectedFornecedor($_POST['id']);
 
 		$imageName = $data[0]['logo'];
-		$logo    = $_FILES['logo'];
+		$logo = $_FILES['logo'];
 		$extension = strrchr($logo['name'],'.');
-		$novaImageName = $imageName . $extension;
+		$novaImageName = $_POST['nome'] . $extension;
 
-		$config['upload_path']          = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/fornecedor/';
-    $config['allowed_types']        = 'gif|jpg|png';
-		$config['file_name']						= $imageName;
-
-		unlink(str_replace(" ","_",$config['upload_path'] . $imageName));
+		$config['upload_path'] = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/fornecedor/';
+    	$config['allowed_types'] = 'gif|jpg|png';
+		$config['file_name'] = $novaImageName;
 
 		if($this->form_validation->run() == FALSE)
 		{
@@ -126,11 +124,12 @@ class Fornecedor extends CI_Controller {
 	{
 		$id = $this->uri->segment(3);
 		$imageName = $this->fornecedorModel->deleteImage($id);
-		$config['upload_path']          = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/fornecedor/';
+		$config['upload_path'] = 'C:xampp/htdocs/HARDWARE171_CODEIGNITER/assets/fornecedor/';
 		unlink($config['upload_path'] . $imageName);
 		$this->fornecedorModel->deleteFornecedor($id);
-		$data['fornecedor'] = $this->fornecedorModel->getFornecedor();
-		$this->load->view('fornecedor/fornecedorList', $data);
+		//$data['fornecedor'] = $this->fornecedorModel->getFornecedor();
+		//$this->load->view('fornecedor/fornecedorList', $data);
+		header("Location: fornecedor/fornecedorList");
 	}
 
 
