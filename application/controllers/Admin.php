@@ -51,15 +51,22 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('email', 'Email', 'required');
 		$this->form_validation->set_rules('senha', 'Senha', 'required');
 
-		if($this->form_validation->run() == FALSE)
+		if($this->adminModel->verifyEmail($_POST['email']) == null)
 		{
-			echo "<script>alert('Erro no cadastro do Administrador, Verifique os campos e tente Novamente!!')</script>";
-			$this->load->view('admin/adminCreate');
+			if($this->form_validation->run() == FALSE)
+			{
+				echo "<script>alert('Erro no cadastro do Administrador, Verifique os campos e tente Novamente!!')</script>";
+				$this->load->view('admin/adminCreate');
+			}
+			else
+			{
+				$this->adminModel->setAdmin();
+				echo "<script>alert('Administrador Cadastrado com Sucesso!!')</script>";
+				$this->load->view('admin/adminCreate');
+			}
 		}
-		else
-		{
-			$this->adminModel->setAdmin();
-			echo "<script>alert('Administrador Cadastrado com Sucesso!!')</script>";
+		else {
+			echo "<script>alert('Email já cadastrado no sistema!!')</script>";
 			$this->load->view('admin/adminCreate');
 		}
 	}
@@ -98,7 +105,7 @@ class Admin extends CI_Controller {
 			if ($this->adminModel->verifyLogin())
 			{
 				$data['login'] = 'TRUE';
-				$adminLogged = $this->adminModel->getLoggedAdmin($this->adminModel->verifyLogin()[0]['id']);
+				$adminLogged = $this->adminModel->getLoggedAdmin($this->adminModel->getLoggedAdminID($_POST['email']));
 				$data['admin'] = $this->adminModel->getAdmin();
 				$this->session->set_userdata('adminLogged', $adminLogged[0]['email']);
 				$this->session->set_userdata('adminID', $adminLogged[0]['id']);

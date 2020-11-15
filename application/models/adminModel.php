@@ -16,6 +16,12 @@
 		    return $this->db->insert('admin', $data);
 			 }
 
+	public function verifyEmail($email)
+	{
+		$query = $this->db->get_where('admin', array('email' => $email));
+		return $query->result_array();
+	}
+
 		public function getAdmin()
 		 	{
 		     $query = $this->db->get('admin');
@@ -27,6 +33,13 @@
 					$query = $this->db->get_where('admin', array('id' => $id));
 			    return $query->result_array();
 			 	}
+
+				public function getLoggedAdminID($email)
+				 	{
+						$query = $this->db->get_where('admin', array('email' => $email));
+				    $data = $query->result_array();
+						return $data[0]['id'];
+				 	}
 
 		public function deleteAdmin($id)
 			{
@@ -48,13 +61,13 @@
 						return FALSE;
 					}
 					else {
-						if ($databd[0]['senha'] == $data['senha'])
+						if ($databd[0]['senha'] === $data['senha'])
 						{
-							return $databd;
+							return TRUE;
 						}
 						else {
 							echo "<script>alert('Senha incorreta!! Tente Novamente!!')</script>";
-							return $databd;
+							return FALSE;
 						}
 					}
 				 }

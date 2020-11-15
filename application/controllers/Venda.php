@@ -62,6 +62,7 @@ class Venda extends CI_Controller {
 			$id_fornecedor = $id_fornecedor[0]['fornecedor_id'];
 			$this->vendaModel->setvenda($id_fornecedor);
 			echo "<script>alert('Venda Registrada com Sucesso!!')</script>";
+			$data['cliente'] = $this->clienteModel->getCliente();
 			$data['produto'] = $this->produtoModel->getProduto();
 			$this->load->view('venda/vendaCreate', $data);
 		}
